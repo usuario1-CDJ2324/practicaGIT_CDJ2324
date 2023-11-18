@@ -21,22 +21,26 @@ namespace WindowsFormsApp1_CDJ2324
         {
 
             string textoTelegrama;
+            string []palabras;
             char tipoTelegrama = ' ';
             int numPalabras = 0;
             double coste;
             
             textoTelegrama = txtTelegrama.Text;
-            
-            if (cbUrgente.Checked)
+
+            if (rbUrgente.Checked)
                 tipoTelegrama = 'u';
+            else if (rbOrdinario.Checked)
+                tipoTelegrama = 'o';
             
-            numPalabras = textoTelegrama.Length;
+            palabras=textoTelegrama.Split(' ');
+            numPalabras = palabras.Length;
             
             if (tipoTelegrama == 'o')
                 if (numPalabras <= 10)
-                    coste = 25;
+                    coste = 2.5;
                 else
-                    coste = 0.5 * numPalabras;
+                    coste = 2.5+0.5 * (numPalabras-10);
             else
             
             if (tipoTelegrama == 'u')
